@@ -1,43 +1,53 @@
+import EnemyPanel from "./EnemyPanel";
+import BattleLog from "./BattleLog";
+
+
 /**
  * ===========================================
- * BattleUI
+ * Mimicry Research
+ * File : BattleUI.js
+ * Version : 0.1.0
+ * Sprint : 1
+ * Issue : PR003
+ * -------------------------------------------
+ * 功能：
+ * 管理所有戰鬥 UI。
+ *
+ * 目前包含：
+ * - EnemyPanel
+ * - BattleLog
+ *
+ * 未來：
+ * - PlayerPanel
+ * - SkillPanel
  * ===========================================
- * 管理戰鬥畫面 UI。
  */
 
 export default class BattleUI {
 
+    /**
+     * 建立 BattleUI
+     * @param {Phaser.Scene} scene
+     */
     constructor(scene) {
 
         this.scene = scene;
 
-    }
-
-    /**
-     * 建立整個 Battle UI
-     *
-     * 建立順序：
-     * 1. Enemy Panel
-     * 2. Player Panel
-     * 3. Skill Buttons
-     * 4. Battle Log
-     */
-    create() {
-
-        this.createEnemyPanel();
-
-        this.createPlayerPanel();
-
-        this.createSkillButtons();
-
-        this.createBattleLog();
+        this.enemyPanel = new EnemyPanel(scene);
+        this.battleLog = new BattleLog(scene);
 
     }
 
     /**
-     * 建立敵人資訊區
+     * 建立所有 UI
      */
-    createEnemyPanel() {
+    create(context)  {
+
+        this.enemyPanel.create(context.enemy);
+
+        this.battleLog.create();
+
+        this.battleLog.add("Battle Start!");
 
     }
 
