@@ -14,6 +14,8 @@
  */
 import Phaser from "phaser";
 import BattleLog from "./ui/BattleLog";
+import slime from "../data/mimics/slime";
+import EnemyPanel from "./ui/EnemyPanel";
 
 export default class BattleScene extends Phaser.Scene {
 
@@ -31,6 +33,8 @@ export default class BattleScene extends Phaser.Scene {
         this.battleLog.add("Prototype v0.1");
         this.battleLog.add("Battle Start!");
 
+        this.enemyPanel = new EnemyPanel(this);
+        this.enemyPanel.create(slime);
     }
 
 }
