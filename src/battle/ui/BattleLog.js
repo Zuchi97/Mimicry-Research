@@ -21,6 +21,7 @@
  */
 
 import Phaser from "phaser";
+import Layout from "../../core/layout";
 
 export default class BattleLog {
 
