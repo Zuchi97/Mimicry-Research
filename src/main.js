@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import BattleScene from "./game/scenes/BattleScene";
+import BattleScene from "./battle/BattleScene";
 
 const config = {
 
