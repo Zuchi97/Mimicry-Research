@@ -33,8 +33,11 @@ export default class BattleLog {
 
         this.scene = scene;
 
-        // 儲存所有訊息
+        // Battle Log 訊息
         this.messages = [];
+
+        // 最多保留幾筆
+        this.maxMessages = 6;
 
         // Phaser Text 物件
         this.textObject = null;
@@ -48,9 +51,8 @@ export default class BattleLog {
 
         this.textObject = this.scene.add.text(
 
-            Layout.battleLog.x=40,
-
-            Layout.battleLog.y=455,
+            Layout.battleLog.x,
+            Layout.battleLog.y,
 
             "",
 
@@ -64,6 +66,8 @@ export default class BattleLog {
 
         );
 
+        this.updateText();
+
     }
 
     /**
@@ -74,15 +78,27 @@ export default class BattleLog {
 
         this.messages.push(message);
 
-        // 最多保留十筆
-        if (this.messages.length > 10) {
+        if (this.messages.length > this.maxMessages) {
 
             this.messages.shift();
 
         }
 
+        this.updateText();
+
+    }
+
+    /**
+     * 更新 Battle Log 顯示
+     */
+    updateText() {
+
         this.textObject.setText(
+
+            "Research Notes\n" +
+            "--------------\n" +
             this.messages.join("\n")
+
         );
 
     }

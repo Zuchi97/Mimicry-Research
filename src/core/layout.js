@@ -77,10 +77,10 @@ const Layout = {
      */
     battleLog: {
 
-        x: 32,
-        y: 504,
-        width: 1216,
-        height: 184
+        x: 40,
+        y: 455,
+        width: 320,
+        height: 140
 
     },
 

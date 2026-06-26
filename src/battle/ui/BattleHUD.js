@@ -21,4 +21,15 @@ export default class BattleHUD {
 
     }
 
+    /**
+     * 更新敵人 HP
+     * @param {Object} enemyData
+     */
+    updateHP(enemyData) {
+
+        this.enemyPanel.updateHP(enemyData);
+
+    }
+
 }
+

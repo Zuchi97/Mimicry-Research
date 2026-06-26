@@ -57,6 +57,8 @@ export default class BattleUI {
      */
     create(context) {
 
+        this.context = context;
+
         // 舞台
         this.stage.create();
 
@@ -68,8 +70,6 @@ export default class BattleUI {
 
         this.battleLog.create();
 
-        this.battleLog.add("Research Notes");
-        this.battleLog.add("----------------");
         this.battleLog.add("Battle Start!");
 
     }
@@ -84,7 +84,72 @@ export default class BattleUI {
 
     handleCommand(command) {
 
-        console.log(command);
+        switch (command) {
+
+            case "Attack":
+
+                this.attack();
+
+                break;
+
+            case "Observe":
+
+                console.log("Observe");
+
+                break;
+
+            case "Skill":
+
+                console.log("Skill");
+
+                break;
+
+            case "Item":
+
+                console.log("Item");
+
+                break;
+
+        }
+
+    }
+    /**
+     * 玩家攻擊
+     */
+    attack() {
+
+        // 戰鬥已結束
+        if (this.context.isBattleEnded) {
+
+            this.battleLog.add("The battle has already ended.");
+
+            return;
+
+        }
+
+        this.context.enemy.hp -= 5;
+
+        if (this.context.enemy.hp < 0) {
+
+            this.context.enemy.hp = 0;
+
+        }
+
+        this.hud.updateHP(this.context.enemy);
+
+        this.battleLog.add(
+            `You attacked ${this.context.enemy.name}.`
+        );
+
+        if (this.context.enemy.hp === 0) {
+
+            this.context.isBattleEnded = true;
+
+            this.battleLog.add(
+                `${this.context.enemy.name} was defeated.`
+            );
+
+        }
 
     }
 

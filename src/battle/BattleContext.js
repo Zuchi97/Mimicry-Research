@@ -28,6 +28,9 @@ export default class BattleContext {
          */
         this.enemy = null;
 
+        // 戰鬥是否結束
+        this.isBattleEnded = false;
+
         /**
          * 回合數
          */
