@@ -20,16 +20,14 @@ export default class BattleScene extends Phaser.Scene {
 
     create() {
 
-        const context = new BattleContext();
-
-        context.enemy = slime;
-
         // 建立 Battle UI
         this.battleUI = new BattleUI(this);
 
-        console.log(this.battleUI);
+        // 建立戰鬥資料
+        const context = new BattleContext();
+        context.enemy = slime;
 
-        // 建立所有 UI
+        // 初始化 UI
         this.battleUI.create(context);
 
     }

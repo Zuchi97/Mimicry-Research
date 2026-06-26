@@ -1,7 +1,3 @@
-import EnemyPanel from "./EnemyPanel";
-import BattleLog from "./BattleLog";
-
-
 /**
  * ===========================================
  * Mimicry Research
@@ -22,6 +18,11 @@ import BattleLog from "./BattleLog";
  * - SkillPanel
  * ===========================================
  */
+import BattleHUD from "./BattleHUD";
+import BattleLog from "./BattleLog";
+import BattleLayout from "./BattleLayout";
+import BattleStage from "./BattleStage";
+import BattleCommandBar from "./BattleCommandBar";
 
 export default class BattleUI {
 
@@ -33,7 +34,14 @@ export default class BattleUI {
 
         this.scene = scene;
 
-        this.enemyPanel = new EnemyPanel(scene);
+        this.layout = new BattleLayout(scene);
+
+        this.stage = new BattleStage(scene);
+
+        this.commandBar = new BattleCommandBar(scene);
+
+        this.hud = new BattleHUD(scene);
+
         this.battleLog = new BattleLog(scene);
 
     }
@@ -41,12 +49,21 @@ export default class BattleUI {
     /**
      * 建立所有 UI
      */
-    create(context)  {
+    create(context) {
 
-        this.enemyPanel.create(context.enemy);
+        // 舞台
+        this.stage.create();
+
+        // 底部操作列
+        this.commandBar.create();
+
+        // HUD
+        this.hud.create(context);
 
         this.battleLog.create();
 
+        this.battleLog.add("Research Notes");
+        this.battleLog.add("----------------");
         this.battleLog.add("Battle Start!");
 
     }

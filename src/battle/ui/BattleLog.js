@@ -47,16 +47,21 @@ export default class BattleLog {
     create() {
 
         this.textObject = this.scene.add.text(
-            40,
-            500,
+
+            Layout.battleLog.x=40,
+
+            Layout.battleLog.y=455,
+
             "",
+
             {
                 fontSize: "20px",
                 color: "#FFFFFF",
                 wordWrap: {
-                    width: 1200
+                    width: Layout.battleLog.width
                 }
             }
+
         );
 
     }

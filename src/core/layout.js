@@ -2,22 +2,23 @@
  * ===========================================
  * Mimicry Research
  * File : layout.js
- * Version : 0.1.0
- * Sprint : 1
  * -------------------------------------------
  * 功能：
- * 統一管理畫面配置。
+ * 管理所有畫面區域。
  *
- * 所有 UI 元件都必須透過 Layout
- * 取得位置與尺寸。
+ * Stage：
+ * 角色演出的舞台。
+ *
+ * HUD：
+ * 浮動資訊，不限制位置。
+ *
+ * CommandBar：
+ * 玩家操作區。
  * ===========================================
  */
 
 const Layout = {
 
-    /**
-     * 遊戲解析度
-     */
     screen: {
 
         width: 1280,
@@ -26,12 +27,20 @@ const Layout = {
     },
 
     /**
-     * 畫面邊距
+     * 新增：角色舞台
      */
-    padding: 32,
+    stage: {
+
+        x: 0,
+        y: 0,
+
+        width: 1280,
+        height: 600
+
+    },
 
     /**
-     * 敵人資訊區
+     * 保留（EnemyPanel 還會用）
      */
     enemy: {
 
@@ -42,8 +51,17 @@ const Layout = {
 
     },
 
+    safeArea: {
+
+        left: 32,
+        right: 32,
+        top: 24,
+        bottom: 24
+
+    },
+
     /**
-     * 玩家資訊區
+     * 保留
      */
     player: {
 
@@ -55,7 +73,7 @@ const Layout = {
     },
 
     /**
-     * 戰鬥紀錄區
+     * 保留
      */
     battleLog: {
 
@@ -64,8 +82,20 @@ const Layout = {
         width: 1216,
         height: 184
 
-    }
+    },
 
+    /**
+     * 新增
+     */
+   commandBar: {
+
+        x: 0,
+        y: 600,
+
+        width: 1280,
+        height: 120
+
+    }
 };
 
 export default Layout;
