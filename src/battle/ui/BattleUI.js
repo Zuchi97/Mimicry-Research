@@ -38,7 +38,13 @@ export default class BattleUI {
 
         this.stage = new BattleStage(scene);
 
-        this.commandBar = new BattleCommandBar(scene);
+        this.commandBar = new BattleCommandBar(
+
+            scene,
+
+            (command) => this.handleCommand(command)
+
+        );
 
         this.hud = new BattleHUD(scene);
 
@@ -65,6 +71,20 @@ export default class BattleUI {
         this.battleLog.add("Research Notes");
         this.battleLog.add("----------------");
         this.battleLog.add("Battle Start!");
+
+    }
+
+    updateHP(enemyData) {
+
+        this.hpText.setText(
+            `HP ${enemyData.hp} / ${enemyData.maxHp}`
+        );
+
+    }
+
+    handleCommand(command) {
+
+        console.log(command);
 
     }
 

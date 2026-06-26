@@ -80,4 +80,12 @@ export default class EnemyPanel {
 
     }
 
+    updateHP(enemyData) {
+
+        this.hpText.setText(
+            `HP ${enemyData.hp} / ${enemyData.maxHp}`
+        );
+
+    }
+
 }

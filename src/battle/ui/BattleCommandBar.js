@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import Layout from "../../core/layout";
+import CommandButton from "./CommandButton";
 
 /**
  * ===========================================
@@ -28,9 +29,13 @@ export default class BattleCommandBar {
     /**
      * @param {Phaser.Scene} scene
      */
-    constructor(scene) {
+    constructor(scene, onCommand) {
 
         this.scene = scene;
+
+        this.buttons = [];
+
+        this.onCommand = onCommand;
 
     }
 
@@ -70,6 +75,56 @@ export default class BattleCommandBar {
         );
 
         graphics.strokePath();
+        this.createButtons();
+
+    }
+    /**
+     * 建立所有指令按鈕
+     */
+    createButtons() {
+
+        const commands = [
+
+            "Attack",
+            "Observe",
+            "Skill",
+            "Item"
+
+        ];
+
+        const startX = 420;
+
+        const gap = 150;
+
+        commands.forEach((label, index) => {
+
+            const button = new CommandButton(
+
+                this.scene,
+
+                startX + gap * index,
+
+                640,
+
+                label,
+
+                () => {
+
+                    if (this.onCommand) {
+
+                        this.onCommand(label);
+
+                    }
+
+                }
+
+            );
+
+            button.create();
+
+            this.buttons.push(button);
+
+        });
 
     }
 
