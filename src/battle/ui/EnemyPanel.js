@@ -43,25 +43,40 @@ export default class EnemyPanel {
      */
     create(enemyData) {
 
+        const x = Layout.screen.width - Layout.safeArea.right;
+        const y = Layout.safeArea.top;
+
         this.enemyData = enemyData;
 
         this.nameText = this.scene.add.text(
-            Layout.enemy.x,
-            Layout.enemy.y,
-            enemyData.name
-        );
+            x,
+            y,
+            enemyData.name,
+            {
+                fontSize: "24px",
+                color: "#ffffff"
+            }
+        ).setOrigin(1, 0);
 
         this.hpText = this.scene.add.text(
-            Layout.enemy.x,
-            Layout.enemy.y + 40,
-            `HP ${enemyData.hp} / ${enemyData.maxHp}`
-        );
+            x,
+            y + 36,
+            `HP ${enemyData.hp} / ${enemyData.maxHp}`,
+            {
+                fontSize: "20px",
+                color: "#ffffff"
+            }
+        ).setOrigin(1, 0);
 
         this.intentText = this.scene.add.text(
-            Layout.enemy.x,
-            Layout.enemy.y + 80,
-            enemyData.intent
-        );
+            x,
+            y + 68,
+            ` ${enemyData.intent}`,
+            {
+                fontSize: "18px",
+                color: "#cccccc"
+            }
+        ).setOrigin(1, 0);
 
     }
 
